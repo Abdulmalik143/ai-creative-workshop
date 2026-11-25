@@ -1,5 +1,6 @@
-import { Gallery } from "@/presentation/player/Gallery";
+import { DeckPage } from "./DeckPage";
 
-export default function Home() {
-  return <Gallery />;
+/** The public build opens straight on the deck (slides are addressed by hash: #05). */
+export default function Page() {
+  return <DeckPage />;
 }

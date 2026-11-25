@@ -1,34 +1,15 @@
 # CLAUDE.md
 
-Workshop presentation app ("الذكاء الاصطناعي في المجالات الإبداعية"): animated cover
-galleries in Next.js 16 (App Router) + React 19 + TypeScript + Tailwind 4. Arabic, RTL.
-Stack-first: use what `package.json` already has (lucide-react for icons, Tailwind/CSS for
-styling). Add no test runner, state manager, or animation library without asking.
+@AGENTS.md
 
-## Startup Workflow
+Workshop deck «الذكاء الاصطناعي في المجالات الإبداعية», Next.js 16 + React 19 + Tailwind 4, Arabic, RTL.
 
-1. Read this file, then `README.md` (Arabic; explains routes, controls, file layout).
-2. Run `./init.sh`. If it fails, fix the baseline before any new work.
-3. Read `feature_list.json` and pick the single `in-progress` feature, or the first
-   `not-started` one whose dependencies are `done`.
-4. Read the top entry of `progress.md`, especially its **Next** line (and `session-handoff.md` if filled in).
-
-## Map
-
-- `app/page.tsx`, `app/lab/page.tsx`, `app/studio/page.tsx`: the three galleries (`/`, `/lab`, `/studio`)
-- `presentation/covers/themes.ts`: every theme's id, names, and `steps` count (source of truth)
-- `presentation/covers/`: cover layouts + CSS; `lab/` and `studio/` hold their collections
-- `presentation/player/`: gallery, overlay, keyboard navigation, theme adoption (localStorage)
-- `presentation/content.ts`: shared title/subtitle/presenter text
-- `presentation/background/vendor/`: React Bits Gradient ASCII. Vendored, licensed: don't edit
-- `presentation/character/Wamda.tsx` + `public/wamda/`: character states. `source-assets/` stays out of `public/`
-
-## Working Rules
-
-- One feature at a time; touch only files that feature needs.
-- If you change a theme's animation stages, update its `steps` in `themes.ts` in the same change.
-- When you add or remove a theme, update the README counts.
-- User-facing copy is Arabic. Keep the existing voice and don't machine-translate it.
+## Branches
+- `main` (this branch): the public, slides-only static site for GitHub Pages (`output: "export"`, basePath
+  `/ai-creative-workshop`). The home page is the deck. No covers, lab, presenter window, notes, dev view or refs page.
+- `dev`: the full project. Develop there. Bring to `main` only the slide changes needed for sharing (cherry-pick or
+  copy the slide files); never merge `dev` into `main` and never merge this trimmed version back into `dev`.
+- On `main`, every file from `public/` goes through `asset()` (`lib/asset.ts`) so it works under the base path.
 
 ## Presentation Rules (owner decision 2026-11-23)
 
@@ -48,22 +29,3 @@ styling). Add no test runner, state manager, or animation library without asking
   libraries in its catalog, check that each one suits a presentation (look, readability from afar, the
   deck's identity, licence, no competing dependency), show them, and wait for the owner's pick before
   building. If the skill lacks a rule or source this needs, update the skill first, then continue.
-
-## Definition of Done
-
-- [ ] Behavior is implemented in scope
-- [ ] `./init.sh` passes (typecheck + production build)
-- [ ] **Visual check** for any cover, motion, or player change: run `npm run dev`, open the
-      affected route, step through every stage (click / Space / ↓), and check ←/→ theme
-      switching. There are no automated UI tests, so this check is required.
-- [ ] Evidence (commands run plus what you saw) recorded in `feature_list.json` → `evidence`
-
-## End of Session
-
-Update `progress.md` (state, next step, risks) and the feature's `status`/`evidence`.
-This folder is **not a git repo**, so `progress.md` is the only history. Don't run `git init` or commit unless the user asks.
-
-## Escalation
-
-Ask the user before: choosing or approving a theme (that's their decision), changing
-`content.ts` text, adding a dependency, or editing vendored code.

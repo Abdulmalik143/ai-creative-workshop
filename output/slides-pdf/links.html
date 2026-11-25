@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>روابط الورشة · الذكاء الاصطناعي في المجالات الإبداعية</title>
+<style>
+@font-face { font-family: Thmanyah; src: url(assets/fonts/thmanyahsans-Regular.woff2); font-weight: 400; }
+@font-face { font-family: Thmanyah; src: url(assets/fonts/thmanyahsans-Medium.woff2); font-weight: 500; }
+@font-face { font-family: Thmanyah; src: url(assets/fonts/thmanyahsans-Bold.woff2); font-weight: 700; }
+@font-face { font-family: Thmanyah; src: url(assets/fonts/thmanyahsans-Black.woff2); font-weight: 900; }
+@page { size: 1920px 1080px; margin: 0; }
+* { box-sizing: border-box; margin: 0; }
+html, body { background: #05080d; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: Thmanyah, system-ui, sans-serif; color: #e8eef6; }
+.page { width: 1920px; height: 1080px; position: relative; overflow: hidden; break-after: page; }
+.slide img { display: block; width: 1920px; height: 1080px; }
+.links { padding: 96px 120px 80px; background:
+  radial-gradient(1200px 600px at 85% -10%, rgba(56,189,248,.10), transparent 60%),
+  radial-gradient(900px 500px at 0% 110%, rgba(255,122,0,.08), transparent 60%), #05080d; display: flex; flex-direction: column; }
+header { margin-bottom: 48px; }
+.eyebrow { display: inline-block; font-size: 26px; font-weight: 700; color: #ff7a00; letter-spacing: .02em; }
+h1 { font-size: 64px; font-weight: 900; color: #f2f5f5; margin-top: 10px; line-height: 1.2; }
+.grid { display: grid; gap: 28px; }
+.grid.c2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+a { color: inherit; text-decoration: none; }
+.card { display: flex; gap: 26px; align-items: flex-start; padding: 30px 32px; border-radius: 22px;
+  background: #0a1018; border: 1.5px solid rgba(165,216,255,.16); }
+.tile { flex: none; width: 84px; height: 84px; border-radius: 20px; background: #16212e; display: grid; place-items: center; color: #a5d8ff; overflow: hidden; }
+.tile img { width: 62%; height: 62%; object-fit: contain; }
+.body { display: flex; flex-direction: column; gap: 8px; min-width: 0; flex: 1; }
+.name { font-size: 32px; font-weight: 700; color: #f2f5f5; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; line-height: 1.25; }
+.kind { font-size: 18px; font-weight: 700; padding: 4px 12px; border-radius: 999px; border: 1.5px solid currentColor; }
+.k-official { color: #a5d8ff; } .k-community { color: #ffc94d; } .k-video { color: #d6dee8; }
+.what { font-size: 24px; color: #b3c4c6; line-height: 1.45; }
+.note { font-size: 20px; color: #ffb25e; line-height: 1.4; }
+.url { font: 500 21px/1.3 ui-monospace, "SF Mono", Menlo, monospace; color: #38bdf8; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 4px; }
+.links.dense header { margin-bottom: 30px; } .links.dense h1 { font-size: 56px; }
+.links.dense .card { padding: 24px 28px; } .links.dense .grid { gap: 22px; }
+.links.dense .prompt { padding: 26px 34px; margin-bottom: 24px; }
+.prompt { display: flex; gap: 34px; align-items: center; padding: 34px 40px; margin-bottom: 32px; border-radius: 26px;
+  background: linear-gradient(90deg, rgba(255,122,0,.16), rgba(255,122,0,.04)); border: 2px solid #ff7a00; }
+.ptile { flex: none; width: 104px; height: 104px; border-radius: 24px; background: #ff7a00; color: #05080d; display: grid; place-items: center; }
+.pbody { display: flex; flex-direction: column; gap: 8px; }
+.peyebrow { font-size: 22px; font-weight: 700; color: #ffb25e; }
+.ptitle { font-size: 40px; font-weight: 900; color: #f2f5f5; }
+.pwhat { font-size: 24px; color: #e8eef6; line-height: 1.5; max-width: 1400px; }
+.pfile { font: 600 22px/1.3 ui-monospace, "SF Mono", Menlo, monospace; color: #ff7a00; text-align: right; }
+footer { margin-top: auto; font-size: 20px; color: #4a5b6c; }
+.cover { padding: 140px 160px 80px; display: flex; flex-direction: column; background:
+  radial-gradient(1200px 700px at 90% -10%, rgba(56,189,248,.14), transparent 60%),
+  radial-gradient(1000px 600px at 0% 110%, rgba(255,122,0,.12), transparent 60%), #05080d; }
+.cover .logo { height: 70px; align-self: flex-start; margin-bottom: 110px; }
+.ctitle { font-size: 104px; font-weight: 900; color: #f2f5f5; line-height: 1.15; margin: 16px 0 28px; }
+.csub { font-size: 38px; color: #a5d8ff; font-weight: 500; }
+.deck { margin-top: 56px; align-self: flex-start; display: flex; gap: 26px; align-items: baseline; padding: 24px 36px; border-radius: 20px; border: 2px solid #ff7a00; background: rgba(255,122,0,.1); font-size: 34px; font-weight: 700; }
+.deck .url { font-size: 28px; }
+</style>
+</head>
+<body>
+<section class="page cover">
+  <img class="logo" src="assets/logos/rakaya-white.svg" alt="">
+  <span class="eyebrow">روابط الورشة</span>
+  <h1 class="ctitle">الذكاء الاصطناعي في المجالات الإبداعية</h1>
+  <p class="csub">كل الأدوات والمصادر اللي شرحناها، مرتبة حسب السلايد. اضغط على أي بطاقة وتفتح.</p>
+  
+  <footer>تقديم: عبدالملك الهندي · ركايا</footer>
+</section>
+<section class="page links" id="l11">
+    <header>
+      <span class="eyebrow">روابط السلايد 11</span>
+      <h1>MCP — Model Context Protocol</h1>
+    </header>
+    
+    <div class="grid c2"><a class="card" href="https://www.magnific.com/blog/freepik-is-now-magnific/">
+    <span class="tile"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>
+    <span class="body">
+      <span class="name"><bdi>Magnific: Freepik is now Magnific (28 Apr 2026)</bdi></span>
+      
+      
+      <span class="url" dir="ltr">magnific.com/blog/freepik-is-now-magnific</span>
+    </span>
+  </a><a class="card" href="https://www.magnific.com/blog/magnific-mcp-chatgpt/">
+    <span class="tile"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>
+    <span class="body">
+      <span class="name"><bdi>Magnific MCP in ChatGPT (2 Sep 2026)</bdi></span>
+      
+      
+      <span class="url" dir="ltr">magnific.com/blog/magnific-mcp-chatgpt</span>
+    </span>
+  </a></div>
+    <footer>الذكاء الاصطناعي في المجالات الإبداعية · ركايا</footer>
+  </section>
+<section class="page links" id="l15">
+    <header>
+      <span class="eyebrow">روابط السلايد 15</span>
+      <h1>Adobe × MCP</h1>
+    </header>
+    
+    <div class="grid c2"><a class="card" href="https://news.adobe.com/news/2026/11/adobe-powers-new-era-of-creativity">
+    <span class="tile"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>
+    <span class="body">
+      <span class="name"><bdi>Adobe: أسماء البرامج (10 Nov 2026)</bdi></span>
+      
+      
+      <span class="url" dir="ltr">news.adobe.com/news/2026/11/adobe-powers-new-era-of-creativity</span>
+    </span>
+  </a><a class="card" href="https://news.adobe.com/news/2026/11/adobe-transforms-creative-cloud-tools">
+    <span class="tile"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2.5"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></span>
+    <span class="body">
+      <span class="name"><bdi>Adobe: تفاصيل التوفّر (10 Nov 2026)</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">تكاملات محلية لبرامج Creative Cloud</span>
+      <span class="note">معاينة تجريبية خاصة متوقعة في 2027</span>
+      <span class="url" dir="ltr">news.adobe.com/news/2026/11/adobe-transforms-creative-cloud-tools</span>
+    </span>
+  </a><a class="card" href="https://www.daytondailynews.com/nation-world/adobe-max-miami-2026/image_bee16a41-fa94-5fa1-af2c-33127d05e2c6.html">
+    <span class="tile"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>
+    <span class="body">
+      <span class="name"><bdi>الصورة: AP Content Services for Adobe</bdi></span>
+      
+      
+      <span class="url" dir="ltr">daytondailynews.com/nation-world/adobe-max-miami-2026/image_bee16a41-fa94-5fa1-af2c-33127d05e2c6.html</span>
+    </span>
+  </a><a class="card" href="https://blog.adobe.com/en/publish/2026/11/10/explore-new-ways-create-across-creative-cloud-adobe-firefly-while-advancing-craft-precision-choice-control">
+    <span class="tile"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>
+    <span class="body">
+      <span class="name"><bdi>Adobe Blog (10 Nov 2026)</bdi></span>
+      
+      
+      <span class="url" dir="ltr">blog.adobe.com/en/publish/2026/11/10/explore-new-ways-create-across-creative-cloud-adobe-firefly-while-advancing-craft-precision-choice-control</span>
+    </span>
+  </a></div>
+    <footer>الذكاء الاصطناعي في المجالات الإبداعية · ركايا</footer>
+  </section>
+<section class="page links" id="l16">
+    <header>
+      <span class="eyebrow">روابط السلايد 16</span>
+      <h1>التغذية البصرية والمراجع</h1>
+    </header>
+    
+    <div class="grid c3"><a class="card" href="https://www.pinterest.com/">
+    <span class="tile"><img src="assets/logos/pinterest.svg" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>Pinterest</bdi></span>
+      
+      
+      <span class="url" dir="ltr">pinterest.com</span>
+    </span>
+  </a><a class="card" href="https://dribbble.com/">
+    <span class="tile"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>
+    <span class="body">
+      <span class="name"><bdi>Dribbble</bdi></span>
+      
+      
+      <span class="url" dir="ltr">dribbble.com</span>
+    </span>
+  </a><a class="card" href="https://www.behance.net/">
+    <span class="tile"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>
+    <span class="body">
+      <span class="name"><bdi>Behance</bdi></span>
+      
+      
+      <span class="url" dir="ltr">behance.net</span>
+    </span>
+  </a><a class="card" href="https://mobbin.com/">
+    <span class="tile" style="background:#FFFFFF"><img src="assets/logos/mobbin-platform.svg" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>Mobbin</bdi></span>
+      
+      
+      <span class="url" dir="ltr">mobbin.com</span>
+    </span>
+  </a><a class="card" href="https://reactbits.dev">
+    <span class="tile"><img src="assets/logos/react-bits.svg" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>React Bits</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">تأثيرات جاهزة: Aurora وTech Text وClick Spark وNoise</span>
+      
+      <span class="url" dir="ltr">reactbits.dev</span>
+    </span>
+  </a><a class="card" href="https://magicui.design">
+    <span class="tile"><img src="assets/logos/magic-ui.svg" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>Magic UI</bdi></span>
+      
+      
+      <span class="url" dir="ltr">magicui.design</span>
+    </span>
+  </a><a class="card" href="https://daisyui.com">
+    <span class="tile"><img src="assets/logos/daisyui.svg" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>daisyUI</bdi></span>
+      
+      
+      <span class="url" dir="ltr">daisyui.com</span>
+    </span>
+  </a><a class="card" href="https://ui.shadcn.com">
+    <span class="tile"><img src="assets/logos/shadcn-ui.svg" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>shadcn/ui</bdi></span>
+      
+      
+      <span class="url" dir="ltr">ui.shadcn.com</span>
+    </span>
+  </a><a class="card" href="https://ui.aceternity.com">
+    <span class="tile"><img src="assets/logos/aceternity-ui.svg" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>Aceternity UI</bdi></span>
+      
+      
+      <span class="url" dir="ltr">ui.aceternity.com</span>
+    </span>
+  </a></div>
+    <footer>الذكاء الاصطناعي في المجالات الإبداعية · ركايا</footer>
+  </section>
+<section class="page links" id="l17">
+    <header>
+      <span class="eyebrow">روابط السلايد 17</span>
+      <h1>AI Slop</h1>
+    </header>
+    
+    <div class="grid c2"><a class="card" href="https://azzamfilm.com/ar/">
+    <span class="tile"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>
+    <span class="body">
+      <span class="name"><bdi>أثر الفراشة: عزام — الموقع الرسمي</bdi></span>
+      
+      
+      <span class="url" dir="ltr">azzamfilm.com/ar</span>
+    </span>
+  </a><a class="card" href="https://blog.thmanyah.com/post/1nacpxbm4h_1jhggnmybp">
+    <span class="tile"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>
+    <span class="body">
+      <span class="name"><bdi>ثمانية — تغطية النقاش حول الفيلم</bdi></span>
+      
+      
+      <span class="url" dir="ltr">blog.thmanyah.com/post/1nacpxbm4h_1jhggnmybp</span>
+    </span>
+  </a><a class="card" href="https://www.youtube.com/watch?v=bY8RDKoBwU0&amp;t=396s">
+    <span class="tile"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5v14l11-7z"/></svg></span>
+    <span class="body">
+      <span class="name"><bdi>Higgsfield — الفيديو المرجعي</bdi></span>
+      
+      
+      <span class="url" dir="ltr">youtube.com/watch?v=bY8RDKoBwU0&amp;t=396s</span>
+    </span>
+  </a><a class="card" href="https://higgsfield.ai/">
+    <span class="tile"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>
+    <span class="body">
+      <span class="name"><bdi>Higgsfield — الأمثلة الرسمية</bdi></span>
+      
+      
+      <span class="url" dir="ltr">higgsfield.ai</span>
+    </span>
+  </a></div>
+    <footer>الذكاء الاصطناعي في المجالات الإبداعية · ركايا</footer>
+  </section>
+<section class="page links" id="l19">
+    <header>
+      <span class="eyebrow">روابط السلايد 19</span>
+      <h1>ربط Figma بالوكيل</h1>
+    </header>
+    
+    <div class="grid c2"><a class="card" href="https://www.figma.com/mcp-catalog/">
+    <span class="tile"><img src="assets/logos/figma.svg" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>Figma MCP</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">ربط Figma الرسمي بالوكلاء</span>
+      
+      <span class="url" dir="ltr">figma.com/mcp-catalog</span>
+    </span>
+  </a><a class="card" href="https://github.com/awdr74100/figwright">
+    <span class="tile"><img src="assets/logos/figwright.svg" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>Figwright</bdi><span class="kind k-community">مجتمعي</span></span>
+      <span class="what">بديل مفتوح المصدر ومجاني</span>
+      <span class="note">أداة غير رسمية — راجع الأمان والصلاحيات قبل الاستخدام.</span>
+      <span class="url" dir="ltr">github.com/awdr74100/figwright</span>
+    </span>
+  </a><a class="card" href="https://mobbin.com/mcp">
+    <span class="tile" style="background:#FFFFFF"><img src="assets/logos/mobbin.svg" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>Mobbin MCP</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">مراجع واجهات من منتجات حقيقية</span>
+      <span class="note">متاح لمشتركي Pro أو Team</span>
+      <span class="url" dir="ltr">mobbin.com/mcp</span>
+    </span>
+  </a></div>
+    <footer>الذكاء الاصطناعي في المجالات الإبداعية · ركايا</footer>
+  </section>
+<section class="page links" id="l22">
+    <header>
+      <span class="eyebrow">روابط السلايد 22</span>
+      <h1>المونتاج باستخدام AI Agent</h1>
+    </header>
+    
+    <div class="grid c2"><a class="card" href="https://www.youtube.com/watch?v=dA6DuxffnRo">
+    <span class="tile"><img src="assets/logos/davinci-resolve.png" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>DaVinci Resolve MCP</bdi><span class="kind k-video">شرح فيديو</span></span>
+      <span class="what">شرح الربط خطوة بخطوة · MrAlexTech</span>
+      
+      <span class="url" dir="ltr">youtube.com/watch?v=dA6DuxffnRo</span>
+    </span>
+  </a><a class="card" href="https://www.blackmagicdesign.com/media/partial/release/20260908-03">
+    <span class="tile"><img src="assets/logos/davinci-resolve.png" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>DaVinci Resolve 21.1</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">إعلان Blackmagic: تكامل المساعدين</span>
+      <span class="note">التكامل الرسمي ضمن Studio 21.1 وما بعدها</span>
+      <span class="url" dir="ltr">blackmagicdesign.com/media/partial/release/20260908-03</span>
+    </span>
+  </a><a class="card" href="https://www.youtube.com/watch?v=Wi44XLKQ3YA">
+    <span class="tile"><img src="assets/logos/davinci-resolve.png" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>What's New in 21.1</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">فيديو Blackmagic الرسمي</span>
+      
+      <span class="url" dir="ltr">youtube.com/watch?v=Wi44XLKQ3YA</span>
+    </span>
+  </a><a class="card" href="https://news.adobe.com/news/2026/11/adobe-transforms-creative-cloud-tools">
+    <span class="tile"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2.5"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></span>
+    <span class="body">
+      <span class="name"><bdi>Adobe MCP</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">تكاملات محلية لبرامج Creative Cloud</span>
+      <span class="note">معاينة تجريبية خاصة متوقعة في 2027</span>
+      <span class="url" dir="ltr">news.adobe.com/news/2026/11/adobe-transforms-creative-cloud-tools</span>
+    </span>
+  </a></div>
+    <footer>الذكاء الاصطناعي في المجالات الإبداعية · ركايا</footer>
+  </section>
+<section class="page links dense" id="l24">
+    <header>
+      <span class="eyebrow">روابط السلايد 24</span>
+      <h1>أدوات الإنفوجرافيك والأنيميشن الست</h1>
+    </header>
+    <a class="prompt" href="ai_video_editor_skill_addon.md" download>
+  <span class="ptile"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg></span>
+  <span class="pbody">
+    <span class="peyebrow">برومبت جاهز · حمّله وأعطه لـClaude</span>
+    <span class="ptitle">AI Video Editor: محرّر فيديو بالوكيل</span>
+    <span class="pwhat">ملف واحد يجهّز Claude كمحرّر فيديو: يثبّت أدوات هذا السلايد ويتحقق منها (Remotion، HyperFrames، FFmpeg، Whisper، yt-dlp)،
+      يرتّب مجلدات Raw وReferences وExports، ويمشي معك من المراجع إلى التصدير.</span>
+    <span class="pfile" dir="ltr">ai_video_editor_skill_addon.md</span>
+  </span>
+</a>
+    <div class="grid c3"><a class="card" href="https://www.remotion.dev/">
+    <span class="tile"><img src="assets/logos/remotion.png" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>Remotion</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">بناء الفيديو والموشن جرافيك بـReact</span>
+      
+      <span class="url" dir="ltr">remotion.dev</span>
+    </span>
+  </a><a class="card" href="https://github.com/heygen-com/hyperframes">
+    <span class="tile"><img src="assets/logos/hyperframes.svg" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>HyperFrames</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">مشاهد ويب تتحوّل لفيديو: HTML، CSS، JavaScript</span>
+      
+      <span class="url" dir="ltr">github.com/heygen-com/hyperframes</span>
+    </span>
+  </a><a class="card" href="https://ffmpeg.org/">
+    <span class="tile"><img src="assets/logos/ffmpeg.png" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>FFmpeg / FFprobe</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">فحص وقص ودمج وتصدير</span>
+      
+      <span class="url" dir="ltr">ffmpeg.org</span>
+    </span>
+  </a><a class="card" href="https://github.com/openai/whisper">
+    <span class="tile"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span>
+    <span class="body">
+      <span class="name"><bdi>Whisper</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">تفريغ الكلام والنصوص المتزامنة</span>
+      
+      <span class="url" dir="ltr">github.com/openai/whisper</span>
+    </span>
+  </a><a class="card" href="https://github.com/yt-dlp/yt-dlp">
+    <span class="tile"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg></span>
+    <span class="body">
+      <span class="name"><bdi>yt-dlp</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">جلب وسائط مصرّح باستخدامها</span>
+      <span class="note">فقط لمحتوى مسموح بتنزيله</span>
+      <span class="url" dir="ltr">github.com/yt-dlp/yt-dlp</span>
+    </span>
+  </a><a class="card" href="https://github.com/OpenMontageInc/OpenMontage">
+    <span class="tile"><img src="assets/logos/openmontage.png" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>OpenMontage</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">ينظّم مراحل إنتاج الفيديو بالوكيل</span>
+      
+      <span class="url" dir="ltr">github.com/OpenMontageInc/OpenMontage</span>
+    </span>
+  </a></div>
+    <footer>الذكاء الاصطناعي في المجالات الإبداعية · ركايا</footer>
+  </section>
+<section class="page links" id="l25">
+    <header>
+      <span class="eyebrow">روابط السلايد 25</span>
+      <h1>مكتبات برومبت جاهزة</h1>
+    </header>
+    
+    <div class="grid c2"><a class="card" href="https://prompt-motion.com/">
+    <span class="tile"><img src="assets/logos/prompt-motion.svg" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>Prompt Motion</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">مكتبة فيديوهات موشن مصنوعة بـClaude مع البرومبتات التي أنتجتها</span>
+      
+      <span class="url" dir="ltr">prompt-motion.com</span>
+    </span>
+  </a><a class="card" href="https://kineprompt.com/library/">
+    <span class="tile"><img src="assets/logos/kineprompt.svg" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>Kineprompt</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">مكتبة تعرض معاينات للحركة وبرومبتات قابلة للنسخ والتخصيص</span>
+      
+      <span class="url" dir="ltr">kineprompt.com/library</span>
+    </span>
+  </a><a class="card" href="https://promptreels.vercel.app/">
+    <span class="tile"><img src="assets/logos/promptreel.svg" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>PromptReel</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">معرض فيديوهات موشن بالذكاء الاصطناعي مع البرومبت أو المهارة المستخدمة</span>
+      
+      <span class="url" dir="ltr">promptreels.vercel.app</span>
+    </span>
+  </a></div>
+    <footer>الذكاء الاصطناعي في المجالات الإبداعية · ركايا</footer>
+  </section>
+<section class="page links" id="l26">
+    <header>
+      <span class="eyebrow">روابط السلايد 26</span>
+      <h1>كيف سوّيت فيديو تعريفي بالوكيل</h1>
+    </header>
+    
+    <div class="grid c2"><a class="card" href="https://elevenlabs.io/">
+    <span class="tile"><img src="assets/logos/elevenlabs.svg" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>ElevenLabs</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">التعليق الصوتي</span>
+      
+      <span class="url" dir="ltr">elevenlabs.io</span>
+    </span>
+  </a><a class="card" href="https://voice.humain.com/">
+    <span class="tile"><img src="assets/logos/humain.svg" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>HUMAIN Voice</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">صوت عربي: نص لكلام وكلام لنص</span>
+      
+      <span class="url" dir="ltr">voice.humain.com</span>
+    </span>
+  </a><a class="card" href="https://reactbits.dev">
+    <span class="tile"><img src="assets/logos/react-bits.svg" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>React Bits</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">تأثيرات جاهزة: Aurora وTech Text وClick Spark وNoise</span>
+      
+      <span class="url" dir="ltr">reactbits.dev</span>
+    </span>
+  </a><a class="card" href="https://playwright.dev/">
+    <span class="tile"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span>
+    <span class="body">
+      <span class="name"><bdi>Playwright</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">تصوير صفحات الموقع ولوحاته من المتصفح</span>
+      
+      <span class="url" dir="ltr">playwright.dev</span>
+    </span>
+  </a></div>
+    <footer>الذكاء الاصطناعي في المجالات الإبداعية · ركايا</footer>
+  </section>
+<section class="page links" id="l27">
+    <header>
+      <span class="eyebrow">روابط السلايد 27</span>
+      <h1>إدخال البيانات باستخدام Codex</h1>
+    </header>
+    
+    <div class="grid c2"><a class="card" href="https://github.com/ChromeDevTools/chrome-devtools-mcp">
+    <span class="tile"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span>
+    <span class="body">
+      <span class="name"><bdi>Chrome DevTools MCP</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">يخلّي الوكيل يتحكم بالمتصفح</span>
+      
+      <span class="url" dir="ltr">github.com/ChromeDevTools/chrome-devtools-mcp</span>
+    </span>
+  </a><a class="card" href="https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/docs/client-configurations.md">
+    <span class="tile"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span>
+    <span class="body">
+      <span class="name"><bdi>Client configurations</bdi><span class="kind k-official">رسمي</span></span>
+      <span class="what">طريقة الإضافة في Codex وغيره</span>
+      
+      <span class="url" dir="ltr">github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/docs/client-configurations.md</span>
+    </span>
+  </a></div>
+    <footer>الذكاء الاصطناعي في المجالات الإبداعية · ركايا</footer>
+  </section>
+<section class="page links" id="l28">
+    <header>
+      <span class="eyebrow">روابط السلايد 28</span>
+      <h1>3D — مشروع الساعة</h1>
+    </header>
+    
+    <div class="grid c2"><a class="card" href="https://www.youtube.com/watch?v=t4Z4UOQLKnY">
+    <span class="tile"><img src="assets/logos/blender.png" alt=""></span>
+    <span class="body">
+      <span class="name"><bdi>Claude + Blender MCP</bdi><span class="kind k-video">شرح فيديو</span></span>
+      <span class="what">شرح الربط · Tutorialy</span>
+      
+      <span class="url" dir="ltr">youtube.com/watch?v=t4Z4UOQLKnY</span>
+    </span>
+  </a></div>
+    <footer>الذكاء الاصطناعي في المجالات الإبداعية · ركايا</footer>
+  </section>
+</body>
+</html>

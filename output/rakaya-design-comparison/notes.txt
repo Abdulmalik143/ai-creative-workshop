@@ -1,0 +1,4 @@
+1. Current home: clear, simple navigation and high-contrast main copy. Large centered logo and poetic headline delay explaining the service.
+2. Development home: stronger type hierarchy, cohesive dark palette, clearer introductory service copy, and a service CTA. Large empty space above headline; secondary copy and translucent navigation need contrast measurement.
+Recommendation: prefer development direction; shorten headline, reduce upper whitespace, strengthen primary CTA.
+Scope: desktop first-screen visual comparison only. Mobile, keyboard, motion and measured contrast not tested.

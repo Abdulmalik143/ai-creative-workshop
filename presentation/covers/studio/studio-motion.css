@@ -1,0 +1,60 @@
+.cover--studio[data-animate="true"] .studio-copy .cover-title { animation: quiet-in .68s var(--motion) both; }
+.cover--studio[data-animate="true"] .studio-copy .cover-byline { animation: quiet-in .68s .23s var(--motion) both; }
+
+.cover--studio[data-animate="true"] :is(
+  .horizon-pulse, .horizon-sky, .handoff-panel--made i, .orbit-loop, .orbit-core, .draft-board, .draft-free, .draft-clean,
+  .decision-end, .prism-art svg, .assembly-station i, .assembly-station, .edit-preview i,
+  .collage-piece, .collage-sheet, .wave-terrain, .wave-amplitude, .wave-amplitude i, .frame-film, .frame-guides, .layers-plate, .point-art circle
+) {
+  transition: transform .75s var(--motion), translate .75s var(--motion), scale .75s var(--motion),
+    rotate .75s var(--motion), opacity .7s, background .75s, border-color .75s, filter .75s, inset .75s var(--motion);
+}
+
+.cover--studio[data-animate="true"] :is(.handoff-link i, .assembly-rail i) { transition: right .78s var(--motion); }
+.cover--studio[data-animate="true"] .edit-playhead { transition: left .85s var(--motion); }
+.cover--studio[data-animate="true"] :is(.decision-picked, .prism-line, .point-trace) { transition: stroke-dashoffset .85s var(--motion); }
+.cover--studio[data-animate="true"] .print-ink { transition: clip-path .65s var(--motion); }
+.cover--studio[data-animate="true"] .print-bar { transition: top .65s var(--motion); }
+.cover--studio-lens[data-animate="true"] .ascii-backdrop { transition: clip-path .32s ease-out; }
+.cover--studio-lens[data-animate="true"] .lens-rim { transition: top .32s ease-out, left .32s ease-out, width .32s ease-out; }
+
+.cover--studio-horizon[data-animate="true"] .studio-horizon-art,
+.studio-hero-graphic .studio-horizon-art { animation: studio-rise 1.18s var(--motion, ease-out) both; }
+.cover--studio-handoff[data-animate="true"] .handoff-panel--idea { animation: studio-unfold .78s var(--motion) both; }
+.cover--studio-handoff[data-animate="true"] .handoff-panel--made { animation: studio-unfold .78s .22s var(--motion) both; }
+.cover--studio-orbit[data-animate="true"] .orbit-loop { animation: studio-orbit 1.1s var(--motion) both; }
+.cover--studio-orbit[data-animate="true"] .orbit-loop:nth-child(2) { animation-delay: .14s; }
+.cover--studio-orbit[data-animate="true"] .orbit-loop:nth-child(3) { animation-delay: .28s; }
+.cover--studio-draft[data-animate="true"] .draft-free { animation: lab-draw 1.05s var(--motion) both; }
+.cover--studio-decision[data-animate="true"] .decision-art { animation: studio-unfold .9s var(--motion) both; }
+.cover--studio-prism[data-animate="true"] .prism-glass { animation: studio-glass .9s .12s var(--motion) both; }
+.cover--studio-prism[data-animate="true"] .prism-beam { animation: studio-beam .73s var(--motion) both; }
+.cover--studio-print[data-animate="true"] .print-sheet { animation: studio-print 1.02s var(--motion) both; }
+.cover--studio-assembly[data-animate="true"] .assembly-station { animation: studio-assembly .7s var(--motion) both; }
+.cover--studio-assembly[data-animate="true"] .assembly-station--draft { animation-delay: .16s; }
+.cover--studio-assembly[data-animate="true"] .assembly-station--finish { animation-delay: .32s; }
+.cover--studio-edit[data-animate="true"] .edit-track { animation: studio-unfold .74s var(--motion) both; }
+.cover--studio-edit[data-animate="true"] .edit-track:nth-child(2) { animation-delay: .18s; }
+.cover--studio-edit[data-animate="true"] .edit-track:nth-child(3) { animation-delay: .28s; }
+.cover--studio-collage[data-animate="true"] .collage-piece { animation: studio-collage .84s var(--motion) both; }
+.cover--studio-collage[data-animate="true"] .collage-piece:nth-of-type(even) { animation-delay: .19s; }
+.cover--studio-lens[data-animate="true"] .lens-rim { animation: studio-lens-open .92s var(--motion) both; }
+.cover--studio-wave[data-animate="true"] .wave-amplitude i { animation: studio-vibrate .76s calc(var(--i) * 18ms) var(--motion) both; }
+.cover--studio-frame[data-animate="true"] .frame-film { animation: studio-mask 1.1s var(--motion) both; }
+.cover--studio-layers[data-animate="true"] .layers-plate { animation: studio-rise .82s var(--motion) both; }
+.cover--studio-layers[data-animate="true"] .layers-plate--color { animation-delay: .18s; }
+.cover--studio-layers[data-animate="true"] .layers-plate--form { animation-delay: .3s; }
+.cover--studio-point[data-animate="true"] .point-art { animation: studio-point .82s var(--motion) both; }
+
+@keyframes studio-rise { from { opacity: 0; translate: 0 5cqw; } to { opacity: 1; translate: 0; } }
+@keyframes studio-unfold { from { opacity: .05; clip-path: inset(0 0 0 100%); } to { opacity: 1; clip-path: inset(0); } }
+@keyframes studio-orbit { from { scale: .48; opacity: 0; translate: -5cqw 0; } to { scale: 1; opacity: 1; translate: 0; } }
+@keyframes studio-glass { from { opacity: 0; rotate: -30deg; scale: .5; } to { opacity: 1; rotate: 0deg; scale: 1; } }
+@keyframes studio-beam { from { opacity: 0; clip-path: inset(0 0 0 100%); } to { opacity: 1; clip-path: inset(0); } }
+@keyframes studio-print { from { opacity: .1; translate: 0 -11cqw; } to { opacity: 1; translate: 0; } }
+@keyframes studio-assembly { from { opacity: 0; scale: .8; translate: 4cqw 0; } to { opacity: 1; scale: 1; translate: 0; } }
+@keyframes studio-collage { from { opacity: 0; scale: 1.4; rotate: 18deg; } to { opacity: 1; scale: 1; rotate: 0deg; } }
+@keyframes studio-lens-open { from { opacity: 0; scale: .82; } to { opacity: 1; scale: 1; } }
+@keyframes studio-vibrate { from { transform: scaleY(.04); } to { transform: scaleY(1); } }
+@keyframes studio-mask { from { clip-path: inset(21% 16%); filter: brightness(.48); } to { clip-path: inset(0); filter: brightness(1); } }
+@keyframes studio-point { from { opacity: 0; filter: blur(.6cqw); } to { opacity: 1; filter: blur(0); } }

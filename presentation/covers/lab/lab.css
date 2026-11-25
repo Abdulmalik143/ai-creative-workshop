@@ -1,0 +1,313 @@
+.instrument {
+  --signal: #99f5ee;
+  --second: var(--signal);
+  position: absolute;
+  inset: 0;
+  isolation: isolate;
+}
+.instrument-copy { position: absolute; z-index: 2; right: 6cqw; top: 18cqw; }
+.instrument-copy .cover-title { font-size: 6.35cqw; }
+.instrument-copy .cover-byline { margin-top: 3.2cqw; color: inherit; }
+.instrument-copy .cover-byline strong { margin-top: .85cqw; }
+.instrument-surface, .instrument-grid {
+  --mesh: #a9e9fa25;
+  --cell: 3.1cqw;
+  --panel: #07182cba;
+  background-color: var(--panel);
+}
+.instrument-grid {
+  background-image: linear-gradient(var(--mesh) 1px, transparent 1px), linear-gradient(90deg, var(--mesh) 1px, transparent 1px);
+  background-size: var(--cell) var(--cell);
+}
+.instrument-reticle { position: absolute; inset: 0; pointer-events: none; }
+.instrument-reticle i { position: absolute; width: 2.8cqw; height: 2.8cqw; border: 1px solid currentColor; }
+.instrument-reticle i:nth-child(1) { top: 0; left: 0; border-bottom: 0; border-right: 0; }
+.instrument-reticle i:nth-child(2) { top: 0; right: 0; border-bottom: 0; border-left: 0; }
+.instrument-reticle i:nth-child(3) { bottom: 0; left: 0; border-top: 0; border-right: 0; }
+.instrument-reticle i:nth-child(4) { bottom: 0; right: 0; border-top: 0; border-left: 0; }
+.instrument-lamps { display: flex; gap: .55cqw; position: absolute; color: var(--signal); }
+.instrument-lamps i { width: .75cqw; height: .75cqw; border: 1px solid currentColor; border-radius: 50%; }
+.instrument-lamps i:first-child { background: currentColor; box-shadow: 0 0 1.4cqw currentColor; }
+
+.signal-trace { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.signal-trace path { vector-effect: non-scaling-stroke; }
+.signal-axis { stroke: currentColor; opacity: .24; stroke-dasharray: 3 5; }
+.signal-echo { stroke: currentColor; opacity: .42; stroke-width: 1; }
+.signal-main { stroke: currentColor; stroke-width: 1.5; }
+.signal-trace circle { fill: currentColor; }
+.instrument--signal .signal-screen {
+  position: absolute; display: grid; place-items: center; inset: 10.8cqw auto 6cqw 5cqw; width: 33.4cqw;
+  overflow: hidden; border: 1px solid #95dfeb70; color: var(--signal); box-shadow: inset 0 0 7cqw #41cbd238;
+}
+.instrument--signal .signal-screen > svg:first-child { width: 94%; height: 74%; inset: 14% 3% auto; }
+.instrument--signal .signal-screen > .sketch-mark { width: 15cqw; inset: 9.2cqw 3.5cqw auto auto; opacity: .68; transform: rotate(13deg); }
+.instrument--signal .instrument-lamps { inset: 1.45cqw auto auto 1.45cqw; }
+.signal-sweep {
+  position: absolute; inset: 0 auto 0 20%; width: 12%; border-right: 1px solid #d0fffaaa;
+  background: linear-gradient(90deg, transparent, #aaf7fe3a);
+}
+.cover--lab-signal[data-step="1"] .signal-sweep { translate: 10cqw; }
+.cover--lab-signal[data-step="2"] .signal-sweep { translate: 20cqw; }
+.cover--lab-signal[data-step="2"] .signal-echo { opacity: .86; }
+
+.instrument--optics { --signal: #d8cfff; }
+.optics-frame { position: absolute; inset: 9.2cqw 5.5cqw 5cqw; color: var(--signal); overflow: hidden; }
+.optics-frame > .instrument-reticle { opacity: .7; }
+.optical-assembly { position: absolute; inset: 0; display: grid; place-items: center; }
+.optical-axis { position: absolute; inset: 50% 0 auto; border-top: 1px dashed currentColor; opacity: .42; }
+.optical-rings { position: absolute; width: 95%; height: 96%; display: grid; place-items: center; }
+.optical-rings i {
+  position: absolute; width: 92%; height: 91%; border: 1px solid currentColor; border-radius: 50%;
+  background: radial-gradient(ellipse at center, transparent 56%, #aba0ff35 72%, transparent 73%);
+  transform: rotate(-13deg); opacity: .72;
+}
+.optical-rings i:nth-child(2) { width: 74%; height: 83%; transform: rotate(16deg); opacity: .55; }
+.optical-rings i:nth-child(3) { width: 62%; height: 72%; transform: rotate(-15deg); border-style: dashed; opacity: .46; }
+.optical-index {
+  position: absolute; inset: auto 14% 3% 14%; height: 8%;
+  background: repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 1.1cqw);
+  mask-image: linear-gradient(90deg, #000, transparent 42%, transparent 58%, #000);
+  opacity: .58;
+}
+.instrument--optics .optics-frame .sketch-mark { width: 20cqw; left: 1.2cqw; top: 7cqw; transform: rotate(-36deg); }
+.instrument--optics .instrument-copy {
+  inset: 14.7cqw 17.5cqw auto; text-align: center; padding: 4cqw 0 3.1cqw;
+  background: linear-gradient(90deg, #10132d85, #111532f0 21% 79%, #10132d85);
+  border-block: 1px solid #d8cfff5e; backdrop-filter: blur(.56cqw);
+}
+.instrument--optics .cover-title { font-size: 6.85cqw; }
+.instrument--optics .cover-byline { margin-top: 2.4cqw; }
+.cover--lab-optics[data-step="1"] .optical-rings { transform: scale(.86) rotate(12deg); }
+.cover--lab-optics[data-step="2"] .optical-rings { transform: scale(1.03) rotate(-7deg); }
+
+.instrument--network { --signal: #c1ffd8; }
+.instrument--network .network-board {
+  --panel: #0d2a32ce;
+  position: absolute; inset: 8.7cqw auto 5.2cqw 5.6cqw; width: 34.8cqw; color: var(--signal);
+  border: 1px solid #c1ffd86e; clip-path: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 0 100%);
+}
+.instrument--network .network-routes { position: absolute; inset: 0; width: 100%; height: 100%; stroke: currentColor; }
+.network-routes path { vector-effect: non-scaling-stroke; stroke-width: 1.5; opacity: .79; }
+.network-node {
+  position: absolute; display: grid; place-items: center; translate: -50% -50%; width: 5.4cqw; aspect-ratio: 1;
+  border: 1px solid currentColor; background: #143e43; box-shadow: 0 0 2cqw #79ffbe54;
+}
+.network-node i { width: 32%; aspect-ratio: 1; background: currentColor; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }
+.instrument--network .network-board .sketch-mark { width: 12cqw; top: 9cqw; left: 4cqw; transform: rotate(19deg); }
+.instrument--network .network-edge { position: absolute; inset: 43.4cqw 6cqw auto 44.5cqw; border-top: 1px dashed #92f1c570; }
+.instrument--network .instrument-copy { top: 17.8cqw; }
+.instrument--network .cover-title { font-size: 6.1cqw; }
+.instrument--network .cover-byline { margin-top: 3.2cqw; }
+.cover--lab-network[data-step="1"] .network-node:nth-of-type(-n+2),
+.cover--lab-network[data-step="2"] .network-node:nth-of-type(n+3) { background: #b0ffce; color: #154a43; scale: 1.11; }
+
+.instrument--spectrum { --signal: #a9d8ff; }
+.instrument--spectrum .instrument-copy { inset: 10cqw 0 auto; text-align: center; }
+.instrument--spectrum .cover-title { font-size: 7cqw; }
+.instrument--spectrum .cover-byline { margin-top: 2.3cqw; }
+.spectrum-field {
+  position: absolute; inset: auto 5.3cqw 4cqw; height: 20.7cqw;
+  border-bottom: 1px solid #ace2ffad; color: #b6d6ff;
+  background: repeating-linear-gradient(0deg, #a9dfff32 0 1px, transparent 1px 3.7cqw);
+  mask-image: linear-gradient(transparent, #000 24%);
+}
+.spectrum-bars { position: absolute; inset: 0; display: flex; align-items: end; justify-content: stretch; gap: .55cqw; direction: ltr; }
+.spectrum-bars i {
+  flex: 1; height: var(--bar-height); background: linear-gradient(#c5f7ffb0, #4b8bfe15);
+  border-top: 1px solid #d3f7ff; transform-origin: bottom; scale: 1 .72;
+}
+.spectrum-bars i:nth-child(3n) { background: linear-gradient(#b7a7ffb0, #6050fe15); }
+.instrument--spectrum .spectrum-field .sketch-mark { width: 33cqw; bottom: 5cqw; right: 5.5cqw; transform: rotate(-10deg); opacity: .8; }
+.cover--lab-spectrum[data-step="1"] .spectrum-bars i:nth-child(odd),
+.cover--lab-spectrum[data-step="2"] .spectrum-bars i:nth-child(even) { scale: 1 1; }
+.cover--lab-spectrum[data-step="2"] .spectrum-bars i:nth-child(odd) { scale: 1 .46; }
+
+.instrument--terminal { --signal: #0f576a; }
+.terminal-canvas {
+  position: absolute; inset: 10.3cqw 5.5cqw 6.1cqw auto; width: 55.8cqw; overflow: hidden;
+  color: #10243b; background: linear-gradient(142deg, #e4f3f1, #c2dce7); border: 1px solid #ebfeff;
+  box-shadow: .8cqw .9cqw 0 #142841bd; border-radius: .7cqw;
+}
+.terminal-chrome { height: 4.9cqw; padding-inline: 1.9cqw; display: flex; align-items: center; gap: .55cqw; color: #1c5271; border-bottom: 1px solid #7ca9bd79; }
+.terminal-chrome i { width: .7cqw; height: .7cqw; border-radius: 50%; background: currentColor; }
+.terminal-chrome i:nth-child(2) { opacity: .58; }
+.terminal-chrome i:nth-child(3) { opacity: .3; }
+.terminal-chrome b { position: absolute; left: 2.1cqw; width: 10cqw; height: .65cqw; background: #6d9aac68; }
+.instrument--terminal .instrument-copy { right: 3.4cqw; top: 9.7cqw; }
+.instrument--terminal .cover-title { font-size: 5.65cqw; }
+.instrument--terminal .cover-byline { margin-top: 3.9cqw; }
+.instrument--terminal .terminal-canvas .sketch-mark { width: 27cqw; right: 3.65cqw; top: 22cqw; color: #2a7488; }
+.terminal-stack { position: absolute; inset: 10.3cqw auto 6.1cqw 5.5cqw; width: 31.2cqw; display: grid; grid-template-rows: 1.65fr .75fr 1fr; gap: 1cqw; }
+.terminal-module { position: relative; overflow: hidden; color: #a4f8f7; border: 1px solid #a4f8f771; background-color: #0e233bda; }
+.terminal-module .signal-trace { width: 90%; height: 80%; inset: 10% 5%; }
+.terminal-module--meter { align-content: center; padding: 1.25cqw; display: grid; gap: .45cqw; }
+.terminal-module--meter i { height: .53cqw; background: currentColor; opacity: .7; transform-origin: right; }
+.terminal-module--meter i:nth-child(2n) { scale: .55 1; }
+.terminal-module--meter i:nth-child(3n) { scale: .72 1; }
+.terminal-module--cells { display: grid; grid-template-columns: repeat(4, 1fr); gap: .75cqw; padding: 1.15cqw; }
+.terminal-module--cells i { border: 1px solid #a4f8f75a; background: #224c62; }
+.cover--lab-terminal[data-step="1"] .terminal-module--meter i { scale: .93 1; }
+.cover--lab-terminal[data-step="2"] .terminal-module--cells i:nth-child(odd) { background: #a1f0ea; }
+
+.instrument--calibration { --signal: #c5ffeb; }
+.calibration-blueprint {
+  position: absolute; inset: 9.5cqw 5.5cqw 5.3cqw; border: 1px solid #baf5e471; color: #c5ffeb;
+  background: radial-gradient(ellipse at 51% 55%, #111d2fbf, #102b3b52 82%);
+}
+.calibration-guide { position: absolute; opacity: .63; }
+.calibration-guide--horizontal { inset: 49% -2.3cqw auto; border-top: 1px dashed currentColor; }
+.calibration-guide--vertical { inset: -2.2cqw 16% -2.1cqw auto; border-left: 1px dashed currentColor; }
+.calibration-ruler { position: absolute; opacity: .79; }
+.calibration-ruler--top { height: 1.2cqw; inset: 1.8cqw 4.7cqw auto; background: repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 2.15cqw); }
+.calibration-ruler--left { width: 1.25cqw; inset: 5cqw auto 3.1cqw 2cqw; background: repeating-linear-gradient(currentColor 0 1px, transparent 1px 2.15cqw); }
+.calibration-origin { position: absolute; width: 9.5cqw; height: 9.5cqw; top: 40%; right: 10.6%; }
+.calibration-origin .instrument-reticle i { width: 1.85cqw; height: 1.85cqw; }
+.instrument--calibration .calibration-blueprint .sketch-mark { width: 11cqw; left: 4.6cqw; bottom: 5.5cqw; transform: rotate(-13deg); }
+.instrument--calibration .instrument-copy { inset: 16.2cqw 20cqw auto 15cqw; text-align: center; }
+.instrument--calibration .cover-title { font-size: 6.5cqw; }
+.instrument--calibration .cover-title span { background: #07182cb0; padding-block: .45cqw; }
+.instrument--calibration .cover-byline { margin-top: 3.1cqw; }
+.cover--lab-calibration[data-step="1"] .calibration-guide--horizontal { translate: 0 5cqw; }
+.cover--lab-calibration[data-step="1"] .calibration-origin { translate: 0 5cqw; }
+.cover--lab-calibration[data-step="2"] .calibration-guide--vertical,
+.cover--lab-calibration[data-step="2"] .calibration-origin { translate: -6cqw 0; }
+
+.instrument--reactor { --signal: #c2c2ff; }
+.reactor-frame {
+  position: absolute; width: 48cqw; aspect-ratio: 1; top: 6.5cqw; right: 2.6cqw; color: var(--signal);
+  background: radial-gradient(circle at 50% 55%, #bccbffad, #6057ae85 24%, transparent 65%);
+}
+.reactor-vector { position: absolute; inset: 0; width: 100%; height: 100%; stroke: currentColor; stroke-width: 1.05; transform: rotate(-24deg); }
+.reactor-vector polygon:nth-child(2) { opacity: .7; stroke-dasharray: 3 3; }
+.reactor-vector polygon:nth-child(3) { opacity: .72; fill: #aab9ff38; }
+.reactor-vector circle:last-child { fill: #eef6ff; stroke-width: 3; }
+.instrument--reactor .reactor-frame .sketch-mark { width: 37cqw; left: 3cqw; top: 19cqw; transform: rotate(-24deg); opacity: .73; }
+.instrument--reactor .instrument-copy {
+  inset: 17cqw auto auto 4.8cqw; width: 54cqw;
+  padding: 3.3cqw 3.6cqw 3.3cqw 0; border-right: 1px solid #c0caff94;
+  background: linear-gradient(90deg, #080e2207, #080e22e0 47% 100%);
+}
+.instrument--reactor .cover-title { font-size: 5.75cqw; }
+.instrument--reactor .cover-byline { margin-top: 3.1cqw; }
+.cover--lab-reactor[data-step="1"] .reactor-vector { transform: rotate(24deg) scale(.88); }
+.cover--lab-reactor[data-step="2"] .reactor-vector { transform: rotate(70deg) scale(1.04); }
+
+.instrument--scan { --signal: #acf5ef; }
+.scan-screen {
+  --panel: #102c44;
+  position: absolute; inset: 9.4cqw auto 7.5cqw 7.3cqw; width: 31cqw; color: var(--signal); overflow: hidden;
+  background-color: #27475b; box-shadow: inset 0 0 10cqw #abeceeb3;
+}
+.scan-screen::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse, #b7fcf4b3, transparent 65%); }
+.scan-screen .instrument-reticle { inset: 1.2cqw; opacity: .8; }
+.scan-screen .wamda { width: 28.4cqw; left: 1.3cqw; bottom: 1.8cqw; }
+.scan-spine { position: absolute; inset: 9% 50% 5% auto; border-left: 1px dashed #e3fff9c7; }
+.scan-beam { position: absolute; inset: 17% 0 auto; height: 12%; background: linear-gradient(#bafcf745, transparent); border-top: 1px solid #eefffd; box-shadow: 0 -.25cqw 1.7cqw #8dfdee; }
+.instrument--scan .scan-screen .sketch-mark { width: 15cqw; left: 7.8cqw; top: 9.8cqw; transform: rotate(-10deg); }
+.scan-meter { display: grid; grid-template-columns: repeat(3, 1fr); gap: .55cqw; position: absolute; inset: auto auto 5cqw 7.3cqw; width: 31cqw; }
+.scan-meter i { height: .65cqw; border: 1px solid #abf9ef65; }
+.scan-meter i:first-child, .cover--lab-scan[data-step="1"] .scan-meter i:nth-child(2), .cover--lab-scan[data-step="2"] .scan-meter i { background: #abf9ef; }
+.cover--lab-scan[data-step="1"] .scan-beam { translate: 0 13cqw; }
+.cover--lab-scan[data-step="2"] .scan-beam { translate: 0 24cqw; }
+
+.instrument--capsule { --signal: #e1d5ff; }
+.capsule-structure { position: absolute; inset: 10cqw 8.3cqw 5.7cqw auto; width: 29cqw; color: var(--signal); }
+.capsule-ring {
+  position: absolute; inset: -2cqw -7cqw; border: 1px solid #bfc1fc66; border-radius: 50%;
+  background: radial-gradient(ellipse, #a5a5f26e, transparent 68%); transform: rotate(19deg);
+}
+.capsule-glass {
+  position: absolute; inset: 0 4.9cqw; border-radius: 10cqw;
+  background: linear-gradient(90deg, #938bcc, #e0d9ff 24%, #aaa4e3 68%, #8e92d6);
+  box-shadow: 0 0 3.5cqw #b5b3ff9c, inset 0 0 1.5cqw #d9e7ff;
+  border: 1px solid #d4dbff; overflow: hidden;
+}
+.capsule-glass .wamda { width: 21cqw; left: -1.1cqw; bottom: 7.5cqw; }
+.capsule-gates { position: absolute; inset: 0 2.2cqw; }
+.capsule-gates i { position: absolute; inset: 4.8cqw 0 auto; height: 2.4cqw; border-radius: 8cqw; border: 1px solid #dedbff; background: #23244bec; transition: translate .6s; }
+.capsule-gates i:nth-child(2) { inset: auto 0 4.5cqw; }
+.instrument--capsule .capsule-structure .sketch-mark { width: 34cqw; top: 16.4cqw; left: -2.8cqw; transform: rotate(-30deg); }
+.instrument--capsule .instrument-copy { inset: 17.5cqw auto auto 5.4cqw; width: 52.5cqw; }
+.instrument--capsule .cover-title { font-size: 6.25cqw; }
+.cover--lab-capsule[data-step="1"] .capsule-gates i:first-child { translate: 0 -2.8cqw; }
+.cover--lab-capsule[data-step="1"] .capsule-gates i:nth-child(2) { translate: 0 2.8cqw; }
+.cover--lab-capsule[data-step="2"] .capsule-glass .wamda { translate: 0 -1.8cqw; }
+.cover--lab-capsule[data-step="2"] .capsule-ring { transform: rotate(-15deg) scale(1.08); }
+
+.instrument--tracking { --signal: #c2ffdc; }
+.tracking-map {
+  --panel: #0e2b40ba;
+  position: absolute; inset: auto 5cqw 5.2cqw; height: 27cqw; overflow: hidden; color: var(--signal);
+  border: 1px solid #b8fbe497; box-shadow: inset 0 0 5cqw #8aefd02e;
+}
+.tracking-route { position: absolute; inset: 0; width: 100%; height: 100%; stroke: currentColor; }
+.tracking-route path { vector-effect: non-scaling-stroke; stroke-width: 1.3; }
+.tracking-route path:nth-child(2) { stroke-dasharray: 4 4; opacity: .5; }
+.tracking-target {
+  position: absolute; width: 21cqw; height: 21cqw; left: 6.5cqw; bottom: 2.4cqw; color: var(--signal);
+  background: radial-gradient(circle, #b8f9dcab, transparent 71%);
+}
+.tracking-target .wamda { width: 19.5cqw; left: .75cqw; bottom: -.15cqw; }
+.instrument--tracking .tracking-map .sketch-mark { width: 12cqw; left: 29cqw; top: 4.3cqw; transform: rotate(141deg); }
+.instrument--tracking .instrument-copy { top: 10.3cqw; right: 7cqw; }
+.instrument--tracking .cover-title { font-size: 6.25cqw; }
+.instrument--tracking .cover-byline {
+  margin-top: 2.5cqw; padding: 1cqw 1.7cqw; background: #0b2034d4; border-right: 1px solid #acffd3a0; width: max-content;
+}
+.cover--lab-tracking[data-step="1"] .tracking-target { translate: 17cqw -2.1cqw; }
+.cover--lab-tracking[data-step="2"] .tracking-target { translate: 31cqw -1.4cqw; }
+
+.collection-nav { display: flex; align-items: center; gap: 7px; }
+.collection-nav .nav-link:not([aria-current]) { background: transparent; border-color: transparent; color: #b8c0db; }
+.collection-nav .nav-link:not([aria-current]):hover { background: #202846; color: #edf2ff; }
+.collection-nav .nav-link[aria-current="page"] { background: #24344b; color: #d9f1ff; border-color: #394f69; }
+.gallery-hero--lab { width: 100%; min-height: 398px; aspect-ratio: 2.85; border-color: #3a5e79; }
+.gallery-hero--lab .hero-scrim { background: linear-gradient(270deg, #091525ee, #0c1c38ab 52%, #101e3927); }
+.gallery-hero--lab .hero-copy { max-width: 59%; }
+.gallery-hero--lab .hero-label { background: #152a41b3; border-color: #7fc1d273; color: #c9f6ef; }
+.gallery-hero--lab .hero-label > span { background: #a2f0e2; }
+.gallery-hero--lab h1 { color: #eef8ff; font-size: clamp(45px, 7.4cqw, 96px); }
+.lab-intro { margin-top: 23px; color: #d5e7f1; font-size: clamp(15px, 1.75cqw, 22px); }
+.gallery-hero--lab .button--primary { background: #ccf8f2; color: #102838; }
+.gallery-hero--lab .button--primary:hover { background: #e5fffb; }
+.lab-hero-graphic { position: absolute; inset: 7% auto 7% 4%; width: 44%; display: grid; place-items: center; }
+.lab-hero-console {
+  position: relative; width: 96%; height: 87%; color: #b3fff1; isolation: isolate;
+  background: radial-gradient(ellipse, #304f80ba, transparent 80%);
+}
+.lab-hero-console .optical-assembly { inset: 0 5%; opacity: .8; }
+.lab-hero-console .signal-trace { width: 90%; height: 74%; inset: 15% 5%; stroke-width: 2; }
+.lab-hero-console .signal-main { stroke-width: 2; }
+.lab-hero-console .sketch-mark { position: absolute; width: 66%; left: 10%; bottom: 4%; opacity: .66; transform: rotate(-14deg); }
+.lab-jumps { display: flex; flex-wrap: wrap; justify-content: end; gap: 8px; }
+.lab-jumps a {
+  white-space: nowrap; font-size: 13px; display: inline-flex; align-items: center; gap: 6px;
+  border: 1px solid #3c5266; border-radius: 7px; padding: 6px 9px; color: #dbebf5; background: #152134;
+}
+.lab-jumps a:hover { background: #24364d; }
+.lab-jumps b { color: #a5eddd; }
+.theme-group { scroll-margin-top: 20px; }
+.theme-group + .theme-group { margin-top: 36px; }
+.theme-group > h3 { font-size: 21px; margin: 0 0 12px; font-weight: 700; color: #e0efef; }
+.theme-grid--seven .theme-card, .theme-grid--seven .theme-body { display: flex; flex-direction: column; }
+.theme-grid--seven .theme-body, .theme-grid--seven .theme-description { flex: 1; }
+.theme-heading h4 { font-size: 21px; line-height: 1.34; font-weight: 700; }
+@media (min-width: 1090px) {
+  .theme-grid--seven { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 790px) {
+  .gallery-hero--lab { min-height: 332px; }
+  .lab-hero-graphic { width: 41%; }
+  .gallery-hero--lab h1 { font-size: clamp(37px, 7.4cqw, 59px); }
+}
+@media (max-width: 565px) {
+  .collection-nav { gap: 1px; }
+  .collection-nav .nav-link { gap: 4px; padding-inline: 6px; }
+  .site-brand > span { display: none; }
+  .gallery-hero--lab { min-height: 450px; aspect-ratio: auto; }
+  .gallery-hero--lab .hero-copy { max-width: none; }
+  .lab-intro { margin-top: 16px; }
+  .lab-hero-graphic { inset: auto 6% 4%; width: auto; height: 46%; }
+  .lab-jumps { gap: 4px; }
+  .lab-jumps a { font-size: 11px; padding: 5px 6px; }
+}

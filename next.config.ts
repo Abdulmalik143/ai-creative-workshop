@@ -1,5 +1,14 @@
 import type { NextConfig } from "next";
 
-const config: NextConfig = { devIndicators: false, agentRules: false };
+const nextConfig: NextConfig = {
+  turbopack: {
+    rules: {
+      "*.css": {
+        loaders: ["@tailwindcss/turbopack"],
+        as: "*.css",
+      },
+    },
+  },
+};
 
-export default config;
+export default nextConfig;

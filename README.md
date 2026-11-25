@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# أغلفة: الذكاء الاصطناعي في المجالات الإبداعية
 
-## Getting Started
+الغلاف المعتمد: **مجسّم** (`covers/lab/viewport`). بقية الأغلفة مراجع للتصميم لاحقًا.
 
-First, run the development server:
+مشروع Next.js مستقل. ستة أغلفة تفاعلية بنسبة 16:9 (مرسومة على 1920×1080 وتتمدد لتملأ الشاشة).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```sh
+npm install
+npm run dev     # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- المعرض في `/`: مرّر المؤشر على غلاف ليتحرك، وانقر لفتحه.
+- العرض الكامل في `/cover/<id>`: `F` ملء الشاشة، `R` إعادة الحركة، السهمان للتنقل، `Esc` للعودة. تختفي الأدوات بعد ثوانٍ من سكون المؤشر.
+- لمن يفضّل تقليل الحركة: تُرسم لقطة ثابتة بدل الحركة.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## البنية
+- `covers/<id>/` غلاف لكل مجلد، و`covers/registry.ts` يسجّلها (الاسم، الفكرة، تلميح التفاعل).
+- `components/stage/Stage.tsx` المسرح 16:9 ومؤشر الفأرة بإحداثيات التصميم، و`lib/useStageLoop.ts` حلقة الرسم.
+- `components/reactbits/LiquidChrome.tsx` من React Bits (غلاف «معدن»). بقية الأغلفة بأكواد مخصصة (WebGL عبر ogl، Canvas 2D، SVG).
+- `scripts/extract-glyphs.py` يستخرج مسارات حروف ثمانية بعد التشكيل (HarfBuzz) لغلاف «تشريح».
+- الخط: ثمانية Sans من `public/fonts`، والشعار الأصلي `public/brand/rakaya.svg`.
+- نص فقاعات كلام ومضة فقط: خط البكسل Unixel (رخصة OFL 1.1) من `public/fonts/unixel` مع ملف الرخصة، ويُعرَّف في `components/lab/wamda/bubbleFont.ts`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+> النص العربي يُحرَّك دائمًا على مستوى السطر أو الكلمة. لا تُقسَّم الحروف، فالتقسيم يكسر اتصالها.
 
-## Learn More
+## معمل المكوّنات (`/lab`)
+سبعة عشر مكوّنًا للشرح، كل واحد يُجرَّب وحده في `/lab/<slug>` على مسرح 1920×1080، وجاهز لإعادة استخدامه داخل العرض.
 
-To learn more about Next.js, take a look at the following resources:
+- `components/lab/meta.ts` قائمة المكوّنات (الاسم، الوظيفة، المراحل، ما يُضبط من لوحة التحكم).
+- `components/lab/registry.tsx` يربط كل slug بمكوّنه، و`components/lab/parts/` المكوّنات نفسها.
+- `components/lab/tokens.ts` ألوان الهوية (الشعار: أبيض ورمادي مخضر، ومضة: برتقالي) وخط ثمانية.
+- كل مكوّن مرحلي يقبل `step` (من المقدّم) و`replay`. من دون `step` يشتغل وحده ويدور.
+- `components/lab/kit/useClickSteps.ts` للمراحل بالنقر: انقر للتالي، Shift+نقرة أو ← للرجوع، R للإعادة.
+- ومضة بالبكسل آرت: `components/lab/wamda/` وبياناتها مولّدة من الفيديو بـ `scripts/make-wamda-sprites.py`.
+- مختبر الشخصيات في `/lab/characters`: عشر شخصيات بالبكسل آرت لرفيق العرض في `components/lab/characters/`. الشخصية المعتمدة: **نوّاف** (`APPROVED_CHARACTER_ID` في `sprites.ts`)، ولم تُضف إلى أي سلايد بعد.
+- من React Bits: Gradient ASCII وRefine Frame (فيه إصلاح سطر واحد لوضع React strict) وCard Swap وFolder وSpotlight Card (يستخدمها السلايد 21 في مقارنة شكل البطاقات، مع تصحيح موضع الضوء داخل المسرح المصغّر) في `components/reactbits/`، ورخصتها في `components/reactbits/LICENSE.md`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## العرض (`/deck`)
+السلايدات من 01 إلى 34 على مسرح 16:9 واحد (1920×1080). الخلفية داكنة ونظيفة في كل السلايدات. الغلاف عليه توهّج خفيف على الحواف فقط، والسلايد 07 وحده عليه خلفية Gradient ASCII بدرجات البرتقالي (تُحمَّل عند دخوله وتُزال بعد خروجه). العناوين الرئيسية في أعلى المنتصف، والمحتوى تحتها من اليمين لليسار.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```sh
+npm run dev     # ثم افتح http://localhost:3000/deck
+```
 
-## Deploy on Vercel
+- **التقديم:** النقر أو المسافة أو ← أو ↓ أو PageDown للمرحلة التالية، و→ أو ↑ أو PageUp أو النقر بالزر الأيمن للرجوع. بعد آخر مرحلة تنقلك نفس الضغطة للسلايد التالي، ولا ينتقل العرض وحده أبدًا. Shift مع الأسهم يقفز سلايدًا كاملًا، وHome وEnd للبداية والنهاية، ورقم السلايد ثم Enter للانتقال إليه.
+- `R` إعادة تشغيل السلايد، `F` ملء الشاشة، `N` ملاحظات الإلقاء، `O` كل السلايدات، `D` وضع التطوير (يُظهر Pending Content وعلامات الـPlaceholders)، و`Esc` للإغلاق. تظهر الأدوات أسفل الشاشة عند تحريك الفأرة وتختفي بعد ثوانٍ.
+- **المراجع:** `/deck/refs` صفحة مستقلة فيها أسماء أدوات ومراجع المسارات الخمسة (السلايدات 19–33)، مصنّفة: رسمي، مجتمعي، شرح فيديو، بدون روابط. يفتحها زر الرابط في شريط الأدوات.
+- **بدون روابط خارجية:** هذا عرض تقديمي، فما فيه أي رابط خارجي أو عنوان موقع أو سهم «افتح» في السلايدات والصفحات والبطاقات. المراجع يعطيها المقدّم للحضور في ملف منفصل، والروابط محفوظة في الكود كمصدر فقط (`content/resources.ts` و`content/refs.ts`).
+- **نافذة المقدّم:** افتح `/deck/notes` في نفس المتصفح (على شاشة اللابتوب)، فتتبع العرض وتعرض المراحل والملاحظات والمراجع، ويمكن التحكم بالعرض منها.
+- كل سلايد يحفظ مرحلته، فإذا رجعت إليه تجده كما تركته. لا يُعاد من البداية إلا بـ `R`. الرابط يحمل رقم السلايد (`/deck#07`) لمعاينة أي سلايد مباشرة.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### المسارات الخمسة (19–33)
+- 19–21 تصميم UI/UX: ربط Figma (ثلاث بطاقات: Figma MCP الرسمي، ثم Figwright المجتمعي، ثم Mobbin MCP مرجع بصري)، ثم البحث والتوجّه وتخطيط التجربة (مثال تحليل الاستبيان على لوحة Figma)، ثم من نظام التصميم إلى واجهات جديدة (خياران، ثم Skill مفعّلة، ثم واجهة حالية وجديدة بنفس القواعد).
+- 22 المونتاج: الافتتاحية تكوين واحد على محور واحد: الوكيل يفكّر وتحته «MCPs»، وDaVinci Resolve يمين على لوح ثلاثي الأبعاد (three.js، `kit/LogoSlabs3D.tsx`)، وAdobe Premiere يسار بنفس المنظور وبضبابية خفيفة وعليه «Soon». بعدها محاكاة محرر مونتاج (مو DaVinci نفسه).
+- 23–26 الإنفوجرافيك والأنيميشن: من الفكرة للفيديو، والأدوات الست (بطاقات: شعار واسم وسطر واحد)، ومكتبات برومبت جاهزة (ثلاث بطاقات بنفس تصميم 24: الاسم والوصف ومثال ومقتطف برومبت؛ الاسم ومربع المثال روابط مخفية تفتح في تبويب جديد بطلب المالك، بلا عنوان ظاهر)، و26 «كيف سوّيت فيديو تعريفي بالوكيل؟»: فيديو المقدّم التعريفي يشتغل وتحته جدول لقطات البرومبت بالثواني ومؤشر يمشي مع الفيديو، ثم الأدوات الخمس.
+- 27–31 قصة جلسة الفيديو مع Claude (من ملخص المالك): رحلة الجلسة بست مراحل، والقرارات قبل التنفيذ، والحوار (كيف يسأل Claude وكيف تجاوب)، وليش نرجع ونأكد (نافذة شات فيها اللحظة من الجلسة لكل سبب)، ونقاط التأكيد والخلاصة.
+- 32 إدخال البيانات: مرجع Chrome DevTools MCP، ثم محاكاة Codex والمتصفح، ويوقف قبل الإرسال.
+- 33 الـ3D: مشروع الساعة Loon Watch V4. الـProduct Sheet والمجسم ورندر Cycles كلها مأخوذة من ملف بلندر المشروع بدون تعديله (`public/deck/media/s27/`، والتفاصيل في `MEDIA.s27`).
+- عنوان كل سلايد في المسار هو اسم المسار نفسه كما في السلايد 18 (`TRACK` في `content/copy.ts`)، ووصف السلايد عنوان فرعي تحته. المحتوى تحت العنوانين داخل `TrackBody` في `kit/Sim.tsx`.
+- كل المحاكاة مرسومة بالكود وقابلة للتعديل، وعلى كل نافذة شارة «محاكاة توضيحية».
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### البنية (`deck/`)
+- `registry.ts` ترتيب السلايدات وترقيمها، ودرجة الخلفية وحالة كل سلايد.
+- `slides/Sxx*.tsx` سلايد لكل ملف، ويصدّر مراحله (`steps`). `slides/compare/` العناصر المشتركة بين 05 و06.
+- `content/copy.ts` كل النصوص الظاهرة، و`content/notes.ts` ملاحظات الإلقاء، و`content/refs.ts` مصادر كل سلايد (تظهر أسماؤها فقط في نافذة المقدّم).
+- `media/media.ts` خانات الوسائط المؤجلة (صورة 05، ومقطعا 17، ومثال 26 بمفتاح `s25Example`) وأصول الساعة في 28 (مفتاح `s27`)، و`media/brands.tsx` شعارات البرامج.
+- `content/resources.ts` أدوات المسارات الخمسة (19–33) وروابطها كمصدر فقط، بمصدر واحد: البطاقات في السلايدات، ونافذة المقدّم، وصفحة `/deck/refs`. الشعارات الرسمية في `public/deck/logos/tracks/`.
+- `character/Wamda.tsx` حالات ومضة: ظل قبل 07، والكشف في 07، والبرتقالي بعده، مع الكلام والسؤال والوقوف.
+- `kit/` أدوات مشتركة: المراحل الزمنية داخل النقرة، والخطوط بطابع Sketch، ومؤشر «الوكيل» ومؤشر «المصمم»، ونافذة Figma التوضيحية، ومشغّل الفيديو. وللمسارات (19–33): `ResourceReference` بطاقة المرجع، و`Sim.tsx` نافذة البرنامج المحاكاة وشريط مراحل الـWorkflow، و`WatchModel.tsx` مجسم الساعة (three.js).
+- `engine/` المشغّل: الحالة، ولوحة المفاتيح، والخلفية المشتركة، والأدوات، والمزامنة مع نافذة المقدّم.
+- الألوان في `theme.ts`: الأزرق للإنسان والفكرة، والبرتقالي لومضة وكل ما ينفّذه الوكيل. لوحة ASCII البرتقالية `ASCII_ORANGE`، ونوع خلفية كل سلايد (`plain` أو `cover` أو `ascii`) في `registry.ts`.
+- العنوان الموحّد `SlideTitle` وموضعه `TITLE` في `kit/ui.tsx`. شعار ركايا الأبيض بالكامل `public/brand/rakaya-white.svg` (نفس الشعار الرسمي بكل أجزائه باللون الأبيض).
+
+### ما ينتظر ملفات
+- السلايد 02: المحتوى مؤجل.
+- السلايدان 05 و06: الصورة والتصميم Placeholder موحد في `slides/compare/sample.ts`. ضع الصورة المولّدة في `public/deck/media/` واضبط `MEDIA.s05Image.src`.
+- السلايد 26: مثال الإنفوجرافيك المتحرك كامل (MP4 بدقة 1080p أو أعلى، والمراجع، ومراحل البناء، وملفات المصدر). ضعها في `public/deck/media/s25/` واضبط `MEDIA.s25Example`. حتى ذلك الحين تظهر المساحة فارغة.
+- السلايد 17: ملفا الفيديو ونقاط القص. ضع الملفين في `public/deck/media/` واضبط `src` و`start` و`end` في `MEDIA.s17Azzam` و`MEDIA.s17Higgsfield`.
+- شعارات البرامج الرسمية: حاليًا رموز Hugeicons أو مربعات بالأحرف. ضع الملف الرسمي في `public/deck/logos/` واضبط `logo` في `media/brands.tsx`.

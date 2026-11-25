@@ -1,26 +1,60 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-thmanyah), system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+html, body { background: #07090b; color: #eef3f3; }
+body { font-family: var(--font-thmanyah), system-ui, sans-serif; }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+/* ---------- cover motion helpers ----------
+   Covers animate with CSS where possible. In gallery thumbnails the stage sets
+   --seek so every animation is parked at a poster frame instead of playing. */
+.poster-stage * { animation-play-state: paused !important; }
+
+::selection { background: #b3c4c6; color: #07090b; }
+
+/* anatomy */
+@keyframes an-sweep { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.an-sweep { transform-box: fill-box; transform-origin: right center; animation: an-sweep 1.5s cubic-bezier(.65,0,.2,1) both; }
+.an-sweep-fill-0 { --d: 3.1s; }
+.an-sweep-fill-1 { --d: 6.2s; }
+@keyframes an-pop { from { opacity: 0; } to { opacity: 1; } }
+.an-node { animation: an-pop .25s ease-out both; }
+@keyframes an-wire { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0 0 0 0); } }
+.an-wire-draw { animation: an-pop .6s ease-out both; }
+@keyframes an-rest { to { opacity: 0; } }
+.an-wire-rest { --d: 8.4s; animation: an-rest .8s ease-in-out both; }
+@keyframes an-fade-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.an-fade { animation: an-fade-in .8s cubic-bezier(.16,1,.3,1) both; }
+
+/* must stay last: shorthand `animation:` rules above would otherwise reset the delay */
+.seek { animation-delay: calc(var(--d, 0s) - var(--seek, 0s)) !important; }
+
+/* ---------- lab motion ---------- */
+@keyframes lab-word { from { opacity: 0; transform: translateY(0.35em); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }
+@keyframes lab-blur { from { opacity: 0; filter: blur(14px); } to { opacity: 1; filter: blur(0); } }
+@keyframes lab-pop { 0% { opacity: 0; transform: scale(0.86); } 60% { opacity: 1; transform: scale(1.04); } 100% { opacity: 1; transform: none; } }
+@keyframes lab-shake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-9px) rotate(-1deg); } 40% { transform: translateX(8px) rotate(1deg); } 60% { transform: translateX(-6px); } 80% { transform: translateX(4px); } }
+@keyframes lab-caret { 50% { opacity: 0; } }
+@keyframes lab-rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes lab-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes lab-grow { from { transform: scaleY(0.08); } to { transform: scaleY(1); } }
+@keyframes lab-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes lab-flash { 0% { background: rgba(255,122,0,.55); } 100% { background: transparent; } }
+@keyframes lab-glitch { 0%, 100% { transform: translate(0,0); } 25% { transform: translate(2px,-1px) rotate(.4deg); } 50% { transform: translate(-3px,1px) rotate(-.5deg); } 75% { transform: translate(1px,2px); } }
+
+/* ---------- deck motion (deck/) ---------- */
+@keyframes deck-tap { from { opacity: .9; transform: scale(.3); } to { opacity: 0; transform: scale(1.6); } }
+@keyframes deck-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes deck-talk { 0%, 100% { transform: translateY(0) scaleY(1); } 30% { transform: translateY(-4px) scaleY(1.01); } 60% { transform: translateY(1px) scaleY(.995); } }
+@keyframes deck-pulse { 0%, 100% { opacity: .55; transform: scale(1); } 50% { opacity: 1; transform: scale(1.06); } }
+@keyframes deck-glow { 0%, 100% { opacity: .5; } 50% { opacity: 1; } }
+@keyframes deck-slam { 0% { opacity: 0; transform: scale(1.35) translateY(-30px); filter: blur(8px); } 55% { opacity: 1; transform: scale(.97); filter: blur(0); } 75% { transform: scale(1.02); } 100% { opacity: 1; transform: none; } }
+@keyframes deck-glitch { 0%, 100% { transform: translate(0, 0); clip-path: inset(0 0 0 0); } 10% { transform: translate(-14px, 4px); clip-path: inset(12% 0 40% 0); } 20% { transform: translate(10px, -6px); clip-path: inset(55% 0 8% 0); } 30% { transform: translate(-6px, 2px); clip-path: inset(0 0 0 0); } 40% { transform: translate(4px, 0); } 50% { transform: translate(0, 0); } }
+@keyframes deck-scan { from { transform: translateY(-100%); } to { transform: translateY(100%); } }
+@keyframes deck-flow { to { stroke-dashoffset: -60; } }
+@keyframes deck-spin { to { transform: rotate(360deg); } }
+@keyframes deck-blink { 50% { opacity: .25; } }
+@keyframes deck-rise-in { from { opacity: 0; transform: translateY(26px) scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes deck-fly { from { opacity: 0; transform: translateY(40px) scale(.85); } to { opacity: 1; transform: none; } }

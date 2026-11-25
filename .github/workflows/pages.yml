@@ -1,7 +1,10 @@
-# Builds the static deck (out/) and publishes it to GitHub Pages. Manual only: Actions → Run workflow.
+# Builds the static deck (out/) and publishes it to GitHub Pages.
+# Runs on every push to main, and by hand from Actions → Run workflow (choose main).
 name: Deploy deck to GitHub Pages
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:

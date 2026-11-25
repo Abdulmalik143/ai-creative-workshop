@@ -24,7 +24,7 @@ const reg = fs.readFileSync(path.join(DECK, "deck/registry.ts"), "utf8");
 const TITLES = Object.fromEntries([...reg.matchAll(/no: (\d+), title: "([^"]+)"/g)].map((m) => [Number(m[1]), m[2]]));
 
 // slides whose links we explained in the workshop (01/05/08 are only the credits of the components the deck is built with)
-const LINK_SLIDES = [11, 15, 16, 17, 19, 22, 24, 25, 26, 27, 28];
+const LINK_SLIDES = [11, 15, 16, 17, 19, 22, 24, 25, 26, 32, 33];
 
 // Fill these in when they exist, then run ./render.sh again:
 const DECK_URL = ""; // the published deck (GitHub), shown on the cover

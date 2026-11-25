@@ -2,6 +2,14 @@
 
 Newest entry on top. Keep each entry short: state, evidence, next step.
 
+## 2026-11-25: Slides 27–31, the session behind the intro video (ai-covers)
+
+- Owner's pick: the five-slide structure without the versions slide, the chat direction for the dialogue/confirm slides, approved («اعتمد»). New: 27 `S27SessionJourney` (six-stage FlowRail, one click per stage, the stage's idea in a card), 28 `S28Decisions` (six cards staggered; effects as LTR chips), 29 `S29Dialogue` (Claude's way ↔ your answer as chat bubbles, two pairs per click), 30 `S30Confirm` (a Claude chat window showing the session moment for each of five reasons; owner's words in «»; number ranges wrapped in LRI/PDI so «13–15» reads right), 31 `S31Checkpoints` (six ✓ points on one line, then the takeaway). Copy in `copy.ts` (JOURNEY, DECISIONS, DIALOGUE, CONFIRM, CHECKS), notes s27–s31.
+- Renumbered: data entry 32, 3D 33, closing 34 (registry ids s32–s34, files keep their names; notes keys moved; resources slide 27→32, 28→33; TRACKS; refs.ts now derives its slide list from RESOURCES). README counts updated. Links PDF re-rendered (pages for 32/33).
+- Evidence: tsc clean; build passed; production :3200 in DevTools Chrome at 1920×1080: 27 at stage 3 (chain with arrows), 28 all cards (content inside every card after the chips fix), 29 all six pairs, 30 reasons 1, 3 and 5 (strikethrough history, ranges read correctly), 31 points + takeaway; 32/33/34 open with their titles. Screenshots looked at.
+
+**Next:** owner's look at 26–31 on the projector; GitHub link for the deck and the prompt (DECK_URL / PROMPT_URL in output/slides-pdf/build.mjs).
+
 ## 2026-11-25: Slide 26 rebuilt around the intro video + light links PDF (ai-covers, output/slides-pdf)
 
 - Slide 26 (owner picked option 2 of 4 original layouts; no library fitted a slide composition): the presenter's intro video v4 (`public/deck/media/s26/intro-v4.mp4`, re-encoded 8 MB from `~/Desktop/my website/v2/abdulmalik-intro/out/final.mp4`, original untouched; `MEDIA.s26Intro`) plays and loops; under it «البرومبت: جدول لقطات بالثواني» with the five PROMPT-v4 shots as a left-to-right bar whose fill and current shot follow the video. Click 2: five tool chips with roles (Remotion البناء، React Bits التأثيرات، Playwright التصوير، FFmpeg الفحص، HyperFrames المعاينة). Sub «كيف سوّيت فيديو تعريفي بالوكيل؟»; registry title updated, status ready; notes rewritten (stages and versions stay in the notes). New resources `react-bits`, `playwright` (slide 26). The presenter window's previews now mute any video (the audience screen carries the sound).
